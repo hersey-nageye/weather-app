@@ -11,6 +11,7 @@ def get_coordinates(city):
     geocoding_url = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=2&appid={geo_api_key}'
 
     try:
+        # Sending request to the Geocoding OpenWeather API:
         response = requests.get(geocoding_url)
         
         if response.status_code == 200:
@@ -38,7 +39,7 @@ def get_coordinates(city):
 
 # Main function to handle user input and display weather data
 def get_weather(lat, lon):
-    onecall_url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={geo_api_key}'
+    onecall_url = f'https://api.openweathermap.org/data/2.5/weather?units=metric&lat={lat}&lon={lon}&appid={geo_api_key}'
 
     try:
         response = requests.get(onecall_url)
@@ -54,12 +55,11 @@ def get_weather(lat, lon):
     
 
     # Fetch coordinates:
-    coordinates = get_coordinates(city)
+    # coordinates = get_coordinates(city)
 
     # Fetch weather data:
     # weather_data
 
     # if weather_data:
-
 # print(get_coordinates("Dubaq"))
 
