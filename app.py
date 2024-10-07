@@ -23,7 +23,7 @@ def detailed_weather(city):
         valid_city = weather_service.validate_city_name(city)
 
         # Get units from the query parameter (default to 'imperial' if not provided)
-        units = request.args.get('units', 'imperial')
+        units = request.args.get('units', 'celsius')
         
         # Get coordinates (lat, lon) for the city
         coordinates = weather_service.get_coordinates(valid_city)
@@ -36,7 +36,7 @@ def detailed_weather(city):
         lat, lon = coordinates
 
         # Get detailed weather using lat and lon
-        detailed_weather_data = weather_service.get_weather(lat, lon)
+        detailed_weather_data = weather_service.get_weather(lat, lon, units)
 
         # Return specific weather details
         return {

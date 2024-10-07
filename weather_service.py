@@ -49,8 +49,8 @@ def get_coordinates(city):
         return {"error": f"Unexpected error: {e}"}     
 
 # Get weather data from lat/lon
-def get_weather(lat, lon):
-    onecall_url = f'https://api.openweathermap.org/data/2.5/weather?units=imperial&lat={lat}&lon={lon}&appid={geo_api_key}'
+def get_weather(lat, lon, units):
+    onecall_url = f'https://api.openweathermap.org/data/2.5/weather?units={units}&lat={lat}&lon={lon}&appid={geo_api_key}'
 
     try:
         # Send request to OpenWeather's Weather API
