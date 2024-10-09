@@ -45,7 +45,7 @@ class TestWeatherApp(unittest.TestCase):
     def test_index(self):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'<html>', response.data)  # Ensure HTML is in the response
+        self.assertIn(b'<!DOCTYPE html>', response.data)  # Ensure HTML is in the response
         self.assertIn(b'<title>Weather App</title>', response.data)  # Example content check
 
 if __name__ == '__main__':
