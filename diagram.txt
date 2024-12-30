@@ -1,0 +1,32 @@
++--------------------------------------------------------+
+|                     User (Browser)                     |
+|                                                        |
+| 1. Submits form with city and units -> [Fetch Request]  |
++----------------------------|---------------------------+
+                             |
+                             v
++------------------------[Flask Backend]---------------------------------+
+|                                                                       |
+| 1. Route "/" -> Serves index.html                                      |
+| 2. Route "/weather/<city>?units=..."                                   |
+|    - Validates city using weather_service.py                           |
+|    - Gets coordinates from OpenWeather Geocoding API                   |
+|    - Calls get_weather() -> Fetches weather using OpenWeather API      |
+|                                                                       |
++----------------------------|-------------------------------------------+
+                             |
+                             v
+            +---------------------------------------------+
+            | OpenWeather API (External Service)          |
+            |                                             |
+            | - Provides city coordinates                 |
+            | - Returns current weather details (JSON)    |
+            +---------------------------------------------+
+                             |
+                             v
++--------------------------------------------------------+
+|                   User (Browser)                       |
+|                                                        |
+| 2. Receives weather data from Flask (JSON)             |
+| 3. Renders data on the page (city, temp, humidity)     |
++--------------------------------------------------------+
